@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111827">
+  <meta name="description" content="Primary-source weekly brief for the finance sector — macro, markets, credit, and deals.">
+  <title>The Brief — Join</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="header-row">
+        <p class="wordmark">The Brief</p>
+        <p class="header-meta">Weekly finance</p>
+      </div>
+      <hr class="accent-rule">
+    </div>
+  </header>
+
+  <main class="main">
+    <article class="letter">
+      <p class="kicker">Mass finance</p>
+      <h1 class="headline">Primary-source weekly brief for the finance sector — macro, markets, credit, and deals.</h1>
+      <p class="subhead">Four desks. One weekly send. Only the desks you choose.</p>
+
+      <hr class="section-rule">
+
+      <h2 class="section-label">What you get</h2>
+      <ul class="proof">
+        <li>
+          <span class="proof-num">01</span>
+          <span>Sourced from regulators, exchanges, filings, and named principals — not aggregator noise.</span>
+        </li>
+        <li>
+          <span class="proof-num">02</span>
+          <span>Four desks only: MACRO, MARKETS, CREDIT, DEALS.</span>
+        </li>
+        <li>
+          <span class="proof-num">03</span>
+          <span>Written for finance professionals who need the week priced — rates, markets, credit, and capital — without filler.</span>
+        </li>
+      </ul>
+
+      <hr class="section-rule">
+
+      <!--
+        Formspree wired 2026-09-10: https://formspree.io/f/xqpkwjed (The Brief Join).
+        data-demo="false" posts to Formspree; on-page success panel still used (Accept: application/json).
+      -->
+      <form
+        id="join-form"
+        class="form"
+        method="POST"
+        action="https://formspree.io/f/xqpkwjed"
+        data-demo="false"
+        novalidate
+      >
+        <fieldset class="join-fields">
+          <legend class="section-label">Join</legend>
+          <div class="form-grid">
+
+          <div class="field">
+            <label class="label" for="email">Email</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              autocomplete="email"
+              required
+              inputmode="email"
+              spellcheck="false"
+              aria-describedby="email-error"
+            >
+            <p class="error" id="email-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label class="label" for="name">Name <span class="opt">(optional)</span></label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              autocomplete="name"
+            >
+          </div>
+
+          <div class="field">
+            <p class="label" id="desks-label">Desks</p>
+            <div
+              class="desks"
+              id="desks-fieldset"
+              role="group"
+              aria-labelledby="desks-label"
+              aria-describedby="desks-error"
+            >
+              <label class="desk">
+                <input type="checkbox" name="desks" value="MACRO" aria-label="MACRO — rates, inflation, policy, FX">
+                <span class="desk-code">MACRO</span>
+                <span class="desk-name">Rates, policy, FX</span>
+              </label>
+              <label class="desk">
+                <input type="checkbox" name="desks" value="MARKETS" aria-label="MARKETS — equities, indices, commodities">
+                <span class="desk-code">MARKETS</span>
+                <span class="desk-name">Equities &amp; commodities</span>
+              </label>
+              <label class="desk">
+                <input type="checkbox" name="desks" value="CREDIT" aria-label="CREDIT — bonds, spreads, funding">
+                <span class="desk-code">CREDIT</span>
+                <span class="desk-name">Bonds &amp; funding</span>
+              </label>
+              <label class="desk">
+                <input type="checkbox" name="desks" value="DEALS" aria-label="DEALS — raises, M&A, listings">
+                <span class="desk-code">DEALS</span>
+                <span class="desk-name">Raises, M&amp;A, listings</span>
+              </label>
+            </div>
+            <p class="error" id="desks-error" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <div class="consent-row">
+              <input id="consent" name="consent" type="checkbox" value="yes" required aria-describedby="consent-error">
+              <label class="consent-copy" for="consent">I consent to receive The Brief by email. I can stop at any time.</label>
+            </div>
+            <p class="error" id="consent-error" role="alert"></p>
+          </div>
+
+          <input type="hidden" name="_subject" value="The Brief — new join">
+
+          <div class="actions">
+            <button class="btn" type="submit" id="submit-btn">Join The Brief</button>
+          </div>
+          </div>
+        </fieldset>
+      </form>
+
+      <div class="success" id="success" hidden tabindex="-1">
+        <p class="success-mark">Confirmed</p>
+        <h2>You’re on The Brief.</h2>
+        <p class="success-desks">Desks: <span id="success-desks"></span></p>
+        <p class="body">Weekly send. Reply SILENCE to any message and you are removed immediately.</p>
+      </div>
+
+      <p class="corridor-line">Operators on the Mauritius–Indian Ocean–Gulf–Africa corridor can also join <a href="../../corridor/lander/index.html">The Corridor</a> (niche desk brief).</p>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p class="footer-brand">From Saahir · <strong>The Brief</strong></p>
+      <p class="footer-silence">Reply SILENCE to any message and you are removed immediately. We never sell this list.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var form = document.getElementById("join-form");
+      var success = document.getElementById("success");
+      var submitBtn = document.getElementById("submit-btn");
+      var desksBox = document.getElementById("desks-fieldset");
+      var DESK_LABELS = {
+        MACRO: "rates, policy, FX",
+        MARKETS: "equities & commodities",
+        CREDIT: "bonds & funding",
+        DEALS: "raises, M&A, listings"
+      };
+      var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      var STORE_KEY = "brief-joins";
+
+      function selectedDesks() {
+        return Array.prototype.map.call(
+          form.querySelectorAll('input[name="desks"]:checked'),
+          function (el) { return el.value; }
+        );
+      }
+
+      function setError(id, message) {
+        var el = document.getElementById(id);
+        el.textContent = message || "";
+      }
+
+      function clearErrors() {
+        setError("email-error", "");
+        setError("desks-error", "");
+        setError("consent-error", "");
+        form.email.setAttribute("aria-invalid", "false");
+        form.consent.setAttribute("aria-invalid", "false");
+        desksBox.removeAttribute("aria-invalid");
+      }
+
+      function validate() {
+        clearErrors();
+        var ok = true;
+        var email = form.email.value.trim();
+        var desks = selectedDesks();
+
+        if (!email) {
+          setError("email-error", "Email is required.");
+          form.email.setAttribute("aria-invalid", "true");
+          ok = false;
+        } else if (!EMAIL_RE.test(email)) {
+          setError("email-error", "Enter a valid email address.");
+          form.email.setAttribute("aria-invalid", "true");
+          ok = false;
+        }
+
+        if (desks.length < 1) {
+          setError("desks-error", "Choose at least one desk.");
+          desksBox.setAttribute("aria-invalid", "true");
+          ok = false;
+        }
+
+        if (!form.consent.checked) {
+          setError("consent-error", "Consent is required to join.");
+          form.consent.setAttribute("aria-invalid", "true");
+          ok = false;
+        }
+
+        return ok;
+      }
+
+      function saveLocal(record) {
+        var list = [];
+        try {
+          list = JSON.parse(localStorage.getItem(STORE_KEY) || "[]");
+          if (!Array.isArray(list)) list = [];
+        } catch (e) {
+          list = [];
+        }
+        list.push(record);
+        try {
+          localStorage.setItem(STORE_KEY, JSON.stringify(list));
+        } catch (e) {
+          /* preview still works if storage is blocked */
+        }
+      }
+
+      function showSuccess(desks) {
+        var labels = desks.map(function (code) {
+          return code + " — " + (DESK_LABELS[code] || code);
+        }).join("; ");
+        document.getElementById("success-desks").textContent = labels;
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+      }
+
+      function payload() {
+        var desks = selectedDesks();
+        return {
+          email: form.email.value.trim(),
+          name: form.name.value.trim(),
+          desks: desks,
+          consent: true,
+          at: new Date().toISOString()
+        };
+      }
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (!validate()) {
+          var invalid = form.querySelector('[aria-invalid="true"]');
+          if (invalid && invalid.focus) invalid.focus();
+          else if (desksBox.getAttribute("aria-invalid") === "true") {
+            var firstDesk = form.querySelector('input[name="desks"]');
+            if (firstDesk) firstDesk.focus();
+          }
+          return;
+        }
+
+        var demo = form.getAttribute("data-demo") === "true";
+        var record = payload();
+
+        if (demo) {
+          saveLocal(record);
+          showSuccess(record.desks);
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+
+        var body = new FormData(form);
+        fetch(form.action, {
+          method: "POST",
+          body: body,
+          headers: { Accept: "application/json" }
+        }).then(function (res) {
+          if (!res.ok) throw new Error("submit-failed");
+          saveLocal(record);
+          showSuccess(record.desks);
+        }).catch(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Join The Brief";
+          setError("consent-error", "Could not send. Check the Formspree ID, or set data-demo=\"true\" to preview.");
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
