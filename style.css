@@ -351,6 +351,10 @@ input[aria-invalid="true"],
   color: var(--paper);
 }
 
+.desk:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
 .consent-row {
   display: grid;
   grid-template-columns: 1.15rem 1fr;
